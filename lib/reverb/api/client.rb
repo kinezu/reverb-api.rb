@@ -46,6 +46,10 @@ module Reverb
         find_by_sku(sku, "all")
       end
 
+      def find_listing_by_keyword(keyword)
+        find_by_keyword(keyword)
+      end
+
       def find_draft(sku)
         find_by_sku(sku, "draft")
       end
@@ -86,6 +90,10 @@ module Reverb
         else
           nil
         end
+      end
+
+      def find_by_keyword(keyword)
+        listings = get("/api/listings/?query=#{keyword}")
       end
 
       def with_defaults(params={})
